@@ -1,0 +1,5 @@
+.Content{
+    /* prev: margin-top = 16px
+    +56px for the additional toolbar */
+    margin-top: 72px;
+}
