@@ -4,7 +4,6 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 // Defines the width and height of the burger
 const burger = (props) => {
-
     //Mapping the number of ingreients for ea bugerIngredient
     //1. turned to an array by object keys
     //2. for every key create an array with a length based on the number of ingredients

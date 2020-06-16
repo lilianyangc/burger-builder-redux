@@ -26,6 +26,7 @@ class BurgerBuilder extends Component {
     }
     
     componentDidMount(){
+        console.log(this.props.match)
         // check if there thigns that are dependent 
         //on the ingredients an handle the data while it is loading
         axios.get('https://react-burger-8cf71.firebaseio.com/ingredients.json')
@@ -100,37 +101,50 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () =>{
-        // alert('You continue!')
+        // // alert('You continue!')
         
-        this.setState({loading:true});
-        const order ={
-            ingredients: this.state.ingredients,
-            // on the real backend, you calculate the ingredients there
-            price: this.state.totalPrice,
-            customer:{
-                name: 'Kero-chan',
-                address:{
-                    street:'Teststreet 1',
-                    zipCode: '41351',
-                    country: 'Germany'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod:'fastest'
+        // this.setState({loading:true});
+        // const order ={
+        //     ingredients: this.state.ingredients,
+        //     // on the real backend, you calculate the ingredients there
+        //     price: this.state.totalPrice,
+        //     customer:{
+        //         name: 'Kero-chan',
+        //         address:{
+        //             street:'Teststreet 1',
+        //             zipCode: '41351',
+        //             country: 'Germany'
+        //         },
+        //         email: 'test@test.com'
+        //     },
+        //     deliveryMethod:'fastest'
 
+        // }
+        // //for firebase only, nodename+.json
+        // //it will create orders node in the database
+        // axios.post('/orders.json', order)
+        //     .then(response=>{ 
+        //         this.setState({
+        //             loading: false, 
+        //             purchasing: false})})
+        //     .catch(error=> {
+        //         this.setState({
+        //             loading:false, 
+        //             purchasing: false})
+        //         console.log(error)});
+        
+        //create an array
+        const queryParams= [];
+        for (let i in this.state.ingredients){
+            queryParams.push(encodeURIComponent(i)+'='+encodeURIComponent(this.state.ingredients[i]))
         }
-        //for firebase only, nodename+.json
-        //it will create orders node in the database
-        axios.post('/orders.json', order)
-            .then(response=>{ 
-                this.setState({
-                    loading: false, 
-                    purchasing: false})})
-            .catch(error=> {
-                this.setState({
-                    loading:false, 
-                    purchasing: false})
-                console.log(error)});
+        //join the array to a string
+        const queryString = queryParams.join('&');
+        //pass the querystring to the address
+        this.props.history.push({
+            pathname: '/checkout',
+             search: '?'+ queryString});
+        // this.props.history.push('/checkout');
     }
 
     render () {
