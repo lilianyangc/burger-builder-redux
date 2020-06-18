@@ -42,12 +42,12 @@ class BurgerBuilder extends Component {
         // const ingredients = {...this.state.ingredients};
 
         const sum = Object.keys(ingredients)
-        .map(igKey =>{
-            return ingredients[igKey];
-        })
-        .reduce((sum, el)=>{
-            return sum + el;
-        },0);
+            .map(igKey =>{
+                return ingredients[igKey];
+            })
+            .reduce((sum, el)=>{
+                return sum + el;
+            },0);
         this.setState({ purchasable: sum > 0 });
     }
 
@@ -102,42 +102,12 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () =>{
         // // alert('You continue!')
-        
-        // this.setState({loading:true});
-        // const order ={
-        //     ingredients: this.state.ingredients,
-        //     // on the real backend, you calculate the ingredients there
-        //     price: this.state.totalPrice,
-        //     customer:{
-        //         name: 'Kero-chan',
-        //         address:{
-        //             street:'Teststreet 1',
-        //             zipCode: '41351',
-        //             country: 'Germany'
-        //         },
-        //         email: 'test@test.com'
-        //     },
-        //     deliveryMethod:'fastest'
-
-        // }
-        // //for firebase only, nodename+.json
-        // //it will create orders node in the database
-        // axios.post('/orders.json', order)
-        //     .then(response=>{ 
-        //         this.setState({
-        //             loading: false, 
-        //             purchasing: false})})
-        //     .catch(error=> {
-        //         this.setState({
-        //             loading:false, 
-        //             purchasing: false})
-        //         console.log(error)});
-        
         //create an array
         const queryParams= [];
         for (let i in this.state.ingredients){
             queryParams.push(encodeURIComponent(i)+'='+encodeURIComponent(this.state.ingredients[i]))
         }
+        queryParams.push('price='+this.state.totalPrice);
         //join the array to a string
         const queryString = queryParams.join('&');
         //pass the querystring to the address
