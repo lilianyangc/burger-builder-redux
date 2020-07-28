@@ -3,7 +3,6 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 import {Route, Redirect} from 'react-router-dom'
 import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
 class Checkout extends Component {
     // state = { 
     //     ingredients: null, 
@@ -29,12 +28,10 @@ class Checkout extends Component {
     // }
 
     checkoutCancelledHandler = () => {
-        console.log('hello')
         this.props.history.goBack();
     }
 
     checkoutContinuedHandler = () => {
-        console.log('hello')
         this.props.history.replace('/checkout/contact-data');
     }
 
