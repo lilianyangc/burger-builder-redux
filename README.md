@@ -8,20 +8,20 @@ the improved version has, 3 users (Member, Staff, Admin) and Cart system.
 Improved Version
 Use Cases:
 Member:
-  > Add an item to the cart
-  > Checkout the cart
-  > Receives a confirmation of the order
-  > View the progress of the order
+- Add an item to the cart
+- Checkout the cart
+- Receives a confirmation of the order
+- View the progress of the order
   
 Staff:
-  > Oversees the orders
-  > Accepts an order
-  > Cancels an order
-  > Add an item 
-  > Adds an announcement
+- Oversees the orders
+- Accepts an order
+- Cancels an order
+- Add an item 
+- Adds an announcement
   
 Admin:
-  > Adds a staff
-  > Removes a staff and Member
-  > Views all the orders
-  > Adds an announcement
+- Adds a staff
+- Removes a staff and Member
+- Views all the orders
+- Adds an announcement
