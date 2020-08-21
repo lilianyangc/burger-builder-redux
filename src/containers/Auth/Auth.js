@@ -125,7 +125,7 @@ class Auth extends Component {
         let errorMessage = null;
         if(this.props.error){
             errorMessage = (
-                // message provided by firebase
+                // message provided by firebase/database
             <p>{this.props.error.message}</p>
             )
         }

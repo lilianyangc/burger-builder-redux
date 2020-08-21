@@ -53,24 +53,32 @@ export const auth = (email, password, isSignup) => {
             returnSecureToken: true
         }
         // sign up
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCjqZn1geUNIwCtfFlBLRnCHfQsDRZroGo';
+        // let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCjqZn1geUNIwCtfFlBLRnCHfQsDRZroGo';
+        let url = 'http://localhost:3000/auth/signup';
         if(!isSignup){
-            // sign in
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCjqZn1geUNIwCtfFlBLRnCHfQsDRZroGo'
+            // login
+            // url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCjqZn1geUNIwCtfFlBLRnCHfQsDRZroGo'
+            url = 'http://localhost:3000/auth/login';
         }
+
         axios.post(url,authData)
         .then( response => {
             const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000)
-            localStorage.setItem('token', response.data.idToken);
+// localStorage.setItem('token', response.data.idToken);
+// localStorage.setItem('userId', response.data.localId);
+// localStorage.setItem('token', response.data.accessToken);
+            const access = "Bearer "+response.data.accessToken;
+            localStorage.setItem('accessToken', access);
+            localStorage.setItem('userId', response.data.userId); 
             localStorage.setItem('expirationDate', expirationDate);
-            localStorage.setItem('userId', response.data.localId);
             // in response.data, userId is called loacalId
-            dispatch(authSuccess(response.data.idToken, response.data.localId))
+
+// dispatch(authSuccess(response.data.idToken, response.data.localId))
+            dispatch(authSuccess(access, response.data.userId))
             dispatch(checkAuthTimeout(response.data.expiresIn))
-        })
-        .catch(err =>{
-            console.log(err)
-            dispatch(authFail(err.response.data.error));
+        }).catch(err =>{
+            // console.log(typeof err.response.data.message);
+            dispatch(authFail(err.response.data));
         });
     }
 }
@@ -86,7 +94,7 @@ export const setAuthRedirectPath = (path) => {
 // async
 export const authCheckState = () => {
     return dispatch => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('accessToken');
         if(!token){
             dispatch(logout())
         }else{

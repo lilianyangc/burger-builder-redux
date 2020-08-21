@@ -29,8 +29,15 @@ export const purchaseBurgerStart = () => {
 export const purchaseBurger = (orderData, token) =>{
     return dispatch => {
         dispatch(purchaseBurgerStart());
-        axios.post('/orders.json?auth=' + token, orderData)
+        console.log(orderData);
+        axios.post('http://localhost:3000/orders/create-order',
+        orderData,
+            {headers:{
+                'authorization': token
+            }}
+        )
         .then(response=>{ 
+            console.log(response);
             // this.setState({ loading: false });
             // this.props.history.push('/');
             dispatch(purchaseBurgerSuccess(response.data.name,orderData))
@@ -42,6 +49,26 @@ export const purchaseBurger = (orderData, token) =>{
         }); 
     }
 }
+
+
+//async
+// export const purchaseBurger = (orderData, token) =>{
+//     return dispatch => {
+//         dispatch(purchaseBurgerStart());
+//         axios.post('/orders.json?auth=' + token, orderData)
+//         .then(response=>{ 
+//             // this.setState({ loading: false });
+//             // this.props.history.push('/');
+//             dispatch(purchaseBurgerSuccess(response.data.name,orderData))
+//         })
+//         .catch(error=> {
+//             // this.setState({ loading:false })
+//             // console.log(error)
+//             dispatch(purchaseBurgerFail(error))
+//         }); 
+//     }
+// }
+
 
 export const purchaseInit = () =>{
     return {
@@ -73,16 +100,19 @@ export const fetchOrdersStart = () => {
 //async code
 export const fetchOrders = (token, userId) => {
    return dispatch => {
-    const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo"' + userId+'"'
-    axios.get('/orders.json' + queryParams)
+    const url = 'http://localhost:3000/user/'+userId+'/orders';
+    axios.get(url, 
+        {headers:{
+        'authorization': token
+         }})
         .then(res=>{
+      
         dispatch(fetchOrdersStart())
+        console.log(res.data);
         const fetchedOrders =[];
         for(let key in res.data){
             fetchedOrders.push({...res.data[key], id: key})
         }
-        // console.log(res.data);
-        // this.setState({loading:false, orders: fetchedOrders});
         dispatch(fetchOrdersSuccess(fetchedOrders))
     }).catch(err =>{
         // this.setState({loading:false})
@@ -90,3 +120,25 @@ export const fetchOrders = (token, userId) => {
     });
    }
 }
+
+//old fetchOrders async code
+// export const fetchOrders = (token, userId) => {
+//     return dispatch => {
+//      const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo"' + userId+'"'
+//      axios.get('/orders.json' + queryParams)
+//          .then(res=>{
+//          dispatch(fetchOrdersStart())
+//          const fetchedOrders =[];
+//          for(let key in res.data){
+//              fetchedOrders.push({...res.data[key], id: key})
+//          }
+//          // console.log(res.data);
+//          // this.setState({loading:false, orders: fetchedOrders});
+//          dispatch(fetchOrdersSuccess(fetchedOrders))
+//      }).catch(err =>{
+//          // this.setState({loading:false})
+//          dispatch(fetchOrdersFail(err))
+//      });
+//     }
+//  }
+ 
