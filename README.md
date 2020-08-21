@@ -1,5 +1,5 @@
 # Burger Builder Client- Improved Version
-coded by Lilian Yang
+Project coded by Lilian Yang
 
 This project is based on Max: Academind Burger Builder Lecture as a base.
 From it's basic features that can only build a burger and submit the order,
