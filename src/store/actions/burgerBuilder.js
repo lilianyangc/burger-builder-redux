@@ -35,7 +35,8 @@ export const initIngredients = () =>{
 
         // check if there thigns that are dependent 
         //on the ingredients an handle the data while it is loading
-        axios.get('https://react-burger-8cf71.firebaseio.com/ingredients.json')
+        // axios.get('https://react-burger-8cf71.firebaseio.com/ingredients.json')
+        axios.get('http://localhost:3000/ingredients/')
         .then(response =>{
             // this.setState({ingredients: response.data})
             dispatch(setIngredients(response.data))

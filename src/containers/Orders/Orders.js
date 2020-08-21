@@ -15,6 +15,7 @@ class Orders extends Component {
 
     componentDidMount(){
         this.props.onFetchOrders(this.props.token, this.props.userId);
+        // old code
         // axios.get('/orders.json').then(res=>{
         //     const fetchedOrders =[];
         //     for(let key in res.data){
@@ -30,6 +31,7 @@ class Orders extends Component {
     render() { 
         let orders = <Spinner />
         if (!this.props.loading){
+            // console.log(this.props.orders);
             orders = this.props.orders.map(order=>(
                 <Order 
                     key={order.id}
