@@ -1,0 +1,23 @@
+.ItemCard{
+    box-sizing: border-box;
+    border: 2px solid #175290;
+    list-style: none;
+    width: 300px;
+    height: 100%;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+    background: #FEBE50;
+}
+
+.Image{
+    box-sizing: border-box;
+    border: 2px solid #175290;
+    list-style: none;
+    width: 300px;
+    height: 100%;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+    background: white;
+}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ItemList from '../../components/ItemList/ItemList';
 
 class Home extends Component {
     state = {  }
@@ -7,7 +8,8 @@ class Home extends Component {
         <>
         {/* Create a ItemCard component */}
         {/* Create ItemCards component */}
-            <p>List of items</p>
+            <p>Home</p>
+            <ItemList></ItemList>
         </>
          );
     }
