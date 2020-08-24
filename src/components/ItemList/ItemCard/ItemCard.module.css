@@ -1,6 +1,6 @@
 .ItemCard{
     box-sizing: border-box;
-    border: 2px solid #175290;
+    /* border: 2px solid #175290; */
     list-style: none;
     width: 300px;
     height: 100%;
@@ -8,16 +8,38 @@
     padding: 5px;
     float: left;
     background: #FEBE50;
+    box-shadow: -3px 7px 5px 0px rgba(0,0,0,0.75);
+
 }
 
 .Image{
     box-sizing: border-box;
-    border: 2px solid #175290;
     list-style: none;
-    width: 300px;
+    width: 80%;
     height: 100%;
-    margin: 10px;
-    padding: 5px;
-    float: left;
+    margin: auto;
     background: white;
+    padding: 5px;
+    border-radius: 5px;
 }
+
+.CardInfo{
+    background-color: white;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.ImageSub {
+    background-color: white;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+}
+
+.Photo {
+    height: 200px;
+    width: 200px;
+  }
