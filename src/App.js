@@ -15,6 +15,7 @@ import {connect} from 'react-redux'
 import * as actions from './store/actions/index'
 import asyncComponent from './hoc/asyncComponent/asyncComponent'
 import Cart from './containers/Cart/Cart';
+import Admin from './containers/Admin/Admin';
 
 const asyncCheckout = asyncComponent(()=>{
   return import('./containers/Checkout/Checkout');
@@ -50,6 +51,7 @@ componentDidMount(){
         <Route path="/auth" component={asyncAuth}/>
         <Route path="/bbuilder" exact component={BurgerBuilder}/>
         <Route path="/cart" exact component={Cart}/>
+        <Route path="/admin" exact component={Admin}/>
         <Route path="/" exact component={Home}/>
         <Redirect to="/"/>
       </Switch>

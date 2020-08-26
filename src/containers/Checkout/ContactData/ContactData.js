@@ -167,8 +167,8 @@ class ContactData extends Component {
         for (let key in this.state.orderForm){
             // pushing an object to formElementsArray
             formElementsArray.push({
-                id:key,
-                config:this.state.orderForm[key]
+                id:key, //we create a key for the mapping key
+                config:this.state.orderForm[key] //adding the config of each element
             });
         }
 

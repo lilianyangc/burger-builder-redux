@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import ItemList from '../../components/ItemList/ItemList';
+import Admin from '../Admin/Admin'
 
 class Home extends Component {
     state = {  }
     render() { 
         return ( 
         <>
-        {/* Create a ItemCard component */}
-        {/* Create ItemCards component */}
             <p>Home</p>
             <ItemList></ItemList>
         </>

@@ -17,7 +17,7 @@ Staff:
 - Oversees the orders
 - Accepts an order
 - Cancels an order
-- Add an item 
+- Add an item to the menu
 - Adds an announcement
   
 Admin:
