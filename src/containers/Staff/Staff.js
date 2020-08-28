@@ -1,10 +1,9 @@
 import React from 'react'
-import Staff from '../../components/Staff/Staff'
+import StaffTable from '../../components/Staff/Staff'
 export default function Staff() {
     return (
         <div>
-            <p>Staff</p>
-            <Staff />
+            <StaffTable />
         </div>
     )
 }

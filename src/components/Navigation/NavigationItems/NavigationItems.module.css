@@ -16,3 +16,8 @@
         flex-flow: row;
     }
 }
+
+.NavMenu{
+    background-color: #175290 !important;
+    border-color: #175290 !important;
+}

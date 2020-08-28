@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ItemList from '../../components/ItemList/ItemList';
-import Admin from '../Admin/Admin'
+import Admin from '../Item/Item'
 
 class Home extends Component {
     state = {  }

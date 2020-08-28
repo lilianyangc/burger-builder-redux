@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+export default class Member extends Component {
 
-export default class Staff extends Component {
+    componentDidMount(){
+        
+    }
+
     render() {
         return (
             <div>
-                <p> Staff Components</p>
+                <p> Member Coponent</p>
                 <Table striped bordered hover>
                 <thead>
                     <tr>
