@@ -103,39 +103,31 @@ export default class Staff extends Component {
       itemHandler = (event) =>{
         event.preventDefault();
         // Create an updated object container
-        const formData = {}
-        // formElementIdentifier = name, street
-        for(let formElementIdentifier in this.state.itemForm){
-            formData[formElementIdentifier] = this.state.itemForm[formElementIdentifier];
-        }
+        const formData = new FormData();
+  
+        formData.append('name', this.state.itemForm.name.value);
+        formData.append('price', this.state.itemForm.price.value);
+        formData.append('availability', this.state.itemForm.availability.value);
+        formData.append('pcs', this.state.itemForm.pcs.value);
+        formData.append('tags', this.state.itemForm.tags.value);
+        formData.append('image', this.state.selectedFile, this.state.selectedFile.name);
 
-        const item ={
-            itemData: formData
-        }
-        item.itemData['image_url'] = this.state.selectedFile
+        console.log('>> formData >> ', formData);
 
-        console.log(item)
-
-        //  axios.post('http://localhost:3000/items/new-item', item)
-        //     .then(response=>{ 
-        //         this.setState({ loading: false });
-        //         this.props.history.push('/');})
-        //     .catch(error=> {
-        //         this.setState({ loading:false })
-        //         console.log(error)});
-
-        // this.props.onOrderBurger(order, this.props.token);
-        // for firebase only, nodename+.json
-        // it will create orders node in the database
-        // axios.post('/orders.json', order)
-        //     .then(response=>{ 
-        //         this.setState({ loading: false });
-        //         this.props.history.push('/');})
-        //     .catch(error=> {
-        //         this.setState({ loading:false })
-        //         console.log(error)}); 
+         axios.post('http://localhost:3000/items/new-item', formData)
+            .then(response=>{ 
+                console.log(response);
+                this.setState({ loading: false });
+                this.refreshPage();
+                // this.props.history.push('/');
+            })
+            .catch(error=> {
+                this.setState({ loading:false })
+                console.log(error)});
      }
-
+     refreshPage() {
+        window.location.reload(true);
+      }
 
 
 
@@ -189,7 +181,7 @@ export default class Staff extends Component {
                 {/* <label>Select image:</label> 
                 <input type="file" name="img" accept="image/*" /><br /> */}
                 <Form.Group>
-                    <Form.File onChange={this.onFileChange} id="exampleFormControlFile1" label="Example file input" accept="image/*"/>
+                    <Form.File onChange={this.onFileChange} id="exampleFormControlFile1" label="Upload Item Image" accept="image/*"/>
                 </Form.Group>
 
                 <Button onClick={this.itemHandler} btntype="Success" 
@@ -201,7 +193,7 @@ export default class Staff extends Component {
         return (
             <>
             <div className={classes.Item}>
-                <h2>~ Add a new item ~</h2>
+                <h3>New Item</h3>
                 {form}
             </div>
             </>

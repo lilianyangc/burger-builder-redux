@@ -57,7 +57,6 @@ componentDidMount(){
         <Route path="/item" exact component={Item}/>
         <Route path="/staff" exact component={Staff}/>
         <Route path="/member" exact component={Member}/>
-
         <Route path="/" exact component={Home}/>
         <Redirect to="/"/>
       </Switch>
@@ -69,7 +68,9 @@ componentDidMount(){
           <Route path="/orders" component={asyncOrders}/>
           <Route path="/auth" component={asyncAuth}/>
           <Route path="/logout" component={Logout}/>
-          <Route path="/" exact component={BurgerBuilder}/>
+          <Route path="/bbuilder" exact component={BurgerBuilder}/>
+          <Route path="/cart" exact component={Cart}/>
+          <Route path="/" exact component={Home}/>
           <Redirect to="/"/>
         </Switch>
       );

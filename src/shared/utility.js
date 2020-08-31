@@ -1,4 +1,5 @@
 export const updateObject = (oldObject, updatedProperties) =>{
+    // placing in the oldObject to be updated with updatedProperties
     return {
         ...oldObject,
         ...updatedProperties
