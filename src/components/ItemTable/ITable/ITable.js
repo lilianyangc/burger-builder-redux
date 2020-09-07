@@ -16,7 +16,7 @@ import Col from 'react-bootstrap/Col'
 import { updateObject, checkValidity } from '../../../shared/utility';
 
 
-export default class ItemTable extends Component {
+export default class ITable extends Component {
 
     constructor(props) {
         super(props);
@@ -151,10 +151,10 @@ export default class ItemTable extends Component {
                         <button onClick={()=>{this.handleModalUpdate(item)}}><FontAwesomeIcon icon={faEdit} /></button>
                         <button onClick={()=>{this.handleModalShow('show')}}><FontAwesomeIcon icon={faTrash} /></button>
                         {/* Update Modal */}
-                       {/* <UpdateItemModal 
-                            currentItem={this.state.currentItem} 
-                            showUpdateModal={this.state.showUpdateModal} 
-                            handleModalUpdate={()=>this.handleModalUpdate()}/> */}
+                        {/* <UpdateItemModal 
+                                currentItem={this.state.currentItem} 
+                                showUpdateModal={this.state.showUpdateModal} 
+                                handleModalUpdate={()=>this.handleModalUpdate()}/> */}
                         <Modal 
                             aria-labelledby="contained-modal-title-vcenter"
                             centered show={this.state.showUpdateModal} 

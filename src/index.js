@@ -10,7 +10,8 @@ import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import thunk from 'redux-thunk';
 import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
-
+import { ToastProvider} from 'react-toast-notifications'
+import CartToast from './components/Menu/CartToast/CartToast'
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -27,7 +28,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <BrowserRouter>
+    <ToastProvider>
       <App />
+      </ToastProvider>
     </BrowserRouter>
     </Provider>
   </React.StrictMode>,

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { updateObject, checkValidity } from '../../../../shared/utility';
 import axios from 'axios';
-import Input from '../../../../components/UI/Input/Input'
+import Input from '../../../UI/Input/Input'
 import Form from 'react-bootstrap/Form';
 
 export default class UpdateItemModal extends Component {

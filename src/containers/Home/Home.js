@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ItemList from '../../components/ItemList/ItemList';
+import Menu from '../../components/Menu/Menu';
 import Admin from '../Item/Item'
 
 class Home extends Component {
@@ -8,7 +8,7 @@ class Home extends Component {
         return ( 
         <>
             <p>Home</p>
-            <ItemList></ItemList>
+            <Menu></Menu>
         </>
          );
     }

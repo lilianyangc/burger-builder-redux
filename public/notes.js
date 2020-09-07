@@ -122,3 +122,72 @@ inputChangedHandler=(event, inputIdentifier)=>{
 //  finally: outermost layer of the object, updating the state. 
     this.setState({itemForm: updatedItemForm, formIsValid: formIsValid});
  }
+
+
+//  JSX -------------------------------------------------------------------------------
+// Transforming to 2dArray-----------
+            // var i;
+            // var output=[];
+            // for (i=0; i < categories.length; i++){
+            //     // categorizedDiv =(<h1><br/><br/>{categories[i]}</h1>)
+            //     itemCards2= items.filter(item => item.category === categories[i])
+            //     // initialize the output['key']
+            //     output[categories[i]] = []; 
+            //     // from that output.key push the filtered items 
+            //     output[categories[i]].push(itemCards2);               
+            // }
+//-------------------------------------
+  // var drink;
+            // var side;
+            //     for (var key in output) {
+
+            //         console.log(output[key])
+            //         itemCards3 = output[key].map(item=>(
+            //             <ItemCard key ={item.id}
+            //                 id={item.id}
+            //                 name={item.name}
+            //                 category={item.category}
+            //                 price={item.price}
+            //                 pcs={item.pcs}
+            //                 tags={item.tags}
+            //                 availability={item.availability} 
+            //                 image_url ={item.image_url}
+            //                 addToCartHandler={()=>this.addToCartHandler(item.id)}
+            //                 qtyChangeHandler={(event)=>this.qtyChangeHandler(event)}
+            //             />
+            //         ))
+
+            //         if ( key === 'drink' ) {
+            //             drink = itemCards3;
+            //         }
+            //         else if ( key === 'side' ) {
+            //             side = itemCards3;
+            //         }
+
+            //     }
+// -----------------------------------
+
+// returns the index in the array with the specified object ID
+const itemIndex = this.state.cart.findIndex(item =>item.id === userItemId)
+console.log(itemIndex)
+
+// return the array without the object ID
+var newArray = this.state.cart.filter(item => item.id !== userItemId)
+console.log(newArray)
+
+// a logn way of finding the same id in an array of objects
+const newCart = this.state.cart.map(item =>{
+    if(item.id === userItemId){
+    console.log('foundit')
+
+    }
+    return item;
+})
+
+// return the equivalent index fro the array------------------------
+let isFound = (element) => element === itemId;
+    // push the new item in the cart
+var itemFound = cart.findIndex(isFound)
+// ----------------
+ // localStorage.removeItem('bqcartItems');
+        // localStorage.removeItem('bqcartItemPcs');

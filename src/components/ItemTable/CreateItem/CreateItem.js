@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import classes from './Item.module.css';
-import Input from '../../components/UI/Input/Input'
+import Input from '../../../components/UI/Input/Input'
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { updateObject, checkValidity } from '../../shared/utility';
+// import './ITable/node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { updateObject, checkValidity } from '../../../shared/utility';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
 
-export default class Staff extends Component {
+export default class CreateItem extends Component {
 
     state = { 
         itemForm:{
@@ -25,6 +25,19 @@ export default class Staff extends Component {
                  valid: false,
                  touched: false
              },
+             category:{
+                elementType:'select',
+                elementConfig:{
+                    options:[
+                        {value:'Burgers', displayValue:'burger'},
+                        {value:'Sides', displayValue:'side'},
+                        {value:'Deserts', displayValue:'desert'},
+                        {value:'Drinks', displayValue:'drink'}]
+                }, 
+                value:'available',
+                valid: true,
+                validation: {}
+            },
              price:{
                  elementType:'input',
                  elementConfig:{
@@ -68,8 +81,8 @@ export default class Staff extends Component {
                  elementType:'select',
                  elementConfig:{
                      options:[
-                         {value:'available', displayValue:'Available'},
-                         {value:'unavailable', displayValue:'Unavailable'}]
+                         {value:'1', displayValue:'Available'},
+                         {value:'0', displayValue:'Unavailable'}]
                  }, 
                  value:'available',
                  valid: true,
@@ -106,6 +119,7 @@ export default class Staff extends Component {
         const formData = new FormData();
   
         formData.append('name', this.state.itemForm.name.value);
+        formData.append('category', this.state.itemForm.category.value);
         formData.append('price', this.state.itemForm.price.value);
         formData.append('availability', this.state.itemForm.availability.value);
         formData.append('pcs', this.state.itemForm.pcs.value);

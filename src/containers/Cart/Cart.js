@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-
+import CartItems from '../../components/CartItems/CartItems'
 class Cart extends Component {
     state = {  }
     render() { 
         return ( 
             <>
-                <p>Cart</p>
+                <CartItems />
             </>
         );
     }

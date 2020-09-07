@@ -5,5 +5,13 @@
     text-decoration: none;
     width: 100%;
     height: 100%;
+    position: static;
+}
+
+.CategorizedCards{
+    float:left;
+    width: 100%;
+    height: 100%;
+    position: static;
 }
 
